@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>Maps | Live Tracker View</title>
+<title> CakePHP | Testing Project </title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -395,8 +395,8 @@
 					<a href="javascript:"><i class="icon-briefcase"></i><span class="title">Testing Pages</span>
 						<span class="arrow "></span></a>
 					<ul class="sub-menu">
-						<li><?= $this->Html->link('Page One', ['controller' => '', 'action' => 'index']); ?></li>
-                        <li><?= $this->Html->link('Page Two', ['controller' => '', 'action' => 'index']); ?></li>
+						<li><?= $this->Html->link('User List', ['controller' => 'Users', 'action' => 'index']); ?></li>
+                        <li><?= $this->Html->link('Student List', ['controller' => 'Students', 'action' => 'index']); ?></li>
                         <li><?= $this->Html->link('Page Three', ['controller' => '', 'action' => 'index']); ?></li>
 					</ul>
 				</li>
