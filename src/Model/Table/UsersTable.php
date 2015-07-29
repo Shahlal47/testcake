@@ -7,19 +7,8 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Users Model
- *
- */
 class UsersTable extends Table
 {
-
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
     public function initialize(array $config)
     {
         $this->table('users');
@@ -28,58 +17,45 @@ class UsersTable extends Table
         $this->addBehavior('Timestamp');
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
     public function validationDefault(Validator $validator)
     {
         $validator
             ->add('id', 'valid', ['rule' => 'numeric'])
             ->allowEmpty('id', 'create');
-            
+
         $validator
-            ->requirePresence('username', 'create')
+//            ->requirePresence('username', 'create')
             ->notEmpty('username');
-            
+
         $validator
             ->add('email', 'valid', ['rule' => 'email'])
-            ->requirePresence('email', 'create')
+//            ->requirePresence('email', 'create')
             ->notEmpty('email');
-            
+
         $validator
             ->requirePresence('password', 'create')
             ->notEmpty('password');
-            
+
         $validator
             ->requirePresence('role', 'create')
             ->notEmpty('role');
-            
+
         $validator
             ->add('status', 'valid', ['rule' => 'boolean'])
-            ->requirePresence('status', 'create')
-            ->notEmpty('status');
-            
+//            ->requirePresence('status', 'create')
+            ->allowEmpty('status');
+
         $validator
-            ->requirePresence('created_by', 'create')
-            ->notEmpty('created_by');
-            
+//            ->requirePresence('created_by', 'create')
+            ->allowEmpty('created_by');
+
         $validator
-            ->requirePresence('modified_by', 'create')
-            ->notEmpty('modified_by');
+//            ->requirePresence('modified_by', 'create')
+            ->allowEmpty('modified_by');
 
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['username']));

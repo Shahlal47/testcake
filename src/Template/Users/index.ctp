@@ -1,49 +1,56 @@
-<div class="actions columns large-2 medium-3">
-    <h3><?= __('Actions') ?></h3>
-    <ul class="side-nav">
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
-    </ul>
-</div>
-<div class="users index large-10 medium-9 columns">
-    <table cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th><?= $this->Paginator->sort('id') ?></th>
-            <th><?= $this->Paginator->sort('username') ?></th>
-            <th><?= $this->Paginator->sort('email') ?></th>
-            <th><?= $this->Paginator->sort('password') ?></th>
-            <th><?= $this->Paginator->sort('role') ?></th>
-            <th><?= $this->Paginator->sort('status') ?></th>
-            <th><?= $this->Paginator->sort('created_by') ?></th>
-            <th class="actions"><?= __('Actions') ?></th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($users as $user): ?>
-        <tr>
-            <td><?= $this->Number->format($user->id) ?></td>
-            <td><?= h($user->username) ?></td>
-            <td><?= h($user->email) ?></td>
-            <td><?= h($user->password) ?></td>
-            <td><?= h($user->role) ?></td>
-            <td><?= h($user->status) ?></td>
-            <td><?= h($user->created_by) ?></td>
-            <td class="actions">
-                <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
-            </td>
-        </tr>
 
-    <?php endforeach; ?>
-    </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="fa fa-users"></i>
+            <span class="caption-subject bold">Users List</span>
+        </div>
+        <div class="actions">
+            <div class="btn-group">
+                <a aria-expanded="false" class="btn btn-circle btn-default btn-sm" href="#" data-toggle="dropdown">
+                    Action <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right" role="menu">
+                    <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="portlet-body"><br>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th class="text-center"><?= $this->Paginator->sort('User Name') ?></th>
+                <th class="text-center"><?= $this->Paginator->sort('User Email') ?></th>
+                <th class="text-center"><?= $this->Paginator->sort('User Role') ?></th>
+                <th class="text-center"><?= $this->Paginator->sort('Active Status') ?></th>
+                <th class="actions text-center"><?= __('Actions') ?></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($users as $user): ?>
+
+                <tr>
+                    <td class="text-center"><?= h($user->username) ?></td>
+                    <td class="text-center"><?= h($user->email) ?></td>
+                    <td class="text-center"><?= h($user->role) ?></td>
+                    <td class="text-center"><?= h($user->status ? __('Yes') : __('No')); ?></td>
+                    <td class="actions text-center">
+                        <?= $this->Html->link(__(''), ['action' => 'view', $user->id], ['class'=>'btn btn-xs fa fa-eye text-primary']) ?>
+                        <?= $this->Html->link(__(''), ['action' => 'edit', $user->id], ['class'=>'btn btn-xs fa fa-pencil text-warning']) ?>
+                        <?= $this->Form->postLink(__(''), ['action' => 'delete', $user->id], ['class'=>'btn btn-xs fa fa-trash text-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="paginator text-center">
+            <ul class="pagination">
+                <?= $this->Paginator->prev('< ' . __('Previous')) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next(__('Next') . ' >') ?>
+            </ul>
+            <p><?= $this->Paginator->counter() ?></p>
+        </div>
     </div>
 </div>
